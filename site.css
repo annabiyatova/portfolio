@@ -20,7 +20,7 @@ img { vertical-align: middle; }
 .mobile-art, .mobile-portrait { display: none; }
 [id]:target { scroll-margin-top: calc(110 * var(--u)); }
 .design li { font-size: calc(20 * var(--u)); line-height: 1.5; }
-[data-node-id="2047:1041"] { white-space: nowrap; word-break: normal; }
+[data-node-id="2047:1041"] { white-space: pre; word-break: normal; }
 [data-node-id="2047:1133"] { pointer-events: none; }
 
 @media (max-width: 1120px) {
