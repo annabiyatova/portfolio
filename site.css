@@ -31,6 +31,52 @@ img { vertical-align: middle; }
   .design .design-system-figure { width: 100%; height: auto; aspect-ratio: 1305 / 818; }
 }
 
+.design .natgeo-gallery {
+  left: 0; width: 100%; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: calc(20 * var(--u));
+  background: #f2f2f2;
+}
+.gallery-frame { position: relative; width: calc(1280 * var(--u)); max-width: 100%; }
+.gallery-track {
+  display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+  scroll-behavior: smooth; scrollbar-width: none; overscroll-behavior-x: contain;
+}
+.gallery-track::-webkit-scrollbar { display: none; }
+.gallery-slide {
+  flex: 0 0 100%; min-width: 0; aspect-ratio: 16 / 9;
+  scroll-snap-align: start;
+}
+.gallery-slide img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.gallery-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  display: grid; place-items: center; width: 44px; height: 44px;
+  border-radius: 50%; background: #626262; color: #fff;
+  font: 30px/1 sans-serif; cursor: pointer;
+}
+.gallery-prev { left: calc(18 * var(--u)); }
+.gallery-next { right: calc(18 * var(--u)); }
+.gallery-arrow:hover { background: #282828; }
+.gallery-dots { display: flex; justify-content: center; }
+.gallery-dots button {
+  width: 28px; height: 28px; display: grid; place-items: center;
+  background: transparent; color: #4b4b4b; cursor: pointer;
+}
+.gallery-dots button::before {
+  content: ''; width: 8px; height: 8px; border-radius: 50%;
+  border: 1px solid currentColor;
+}
+.gallery-dots [aria-current]::before { background: currentColor; }
+.gallery-track:focus-visible, .natgeo-gallery button:focus-visible {
+  outline: 2px solid #282828; outline-offset: 2px;
+}
+.natgeo-gallery [hidden] { display: none; }
+.gallery-status {
+  position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .gallery-track { scroll-behavior: auto; }
+}
+
 @media (max-width: 1120px) {
   .design {
     --u: .8px;
@@ -52,6 +98,9 @@ img { vertical-align: middle; }
   .design [data-order="6"] { order: 6; }
   .design [data-order="7"] { order: 7; }
   .design [data-order="8"] { order: 8; }
+  .design [data-order="9"] { order: 9; }
+  .design [data-order="10"] { order: 10; }
+  .design [data-order="11"] { order: 11; }
   .design :is(.mobile-root,.art-floating,.mobile-external-button) { position: static; inset: auto; translate: none; }
   .design .mobile-flow:not(.art-base), .design .mobile-stack {
     width: 100%;
@@ -183,10 +232,17 @@ img { vertical-align: middle; }
 
   .natgeo .design [data-node-id="365:1654"] { position: static; inset: auto; }
   .natgeo .design [data-node-id="365:1655"] { width: 100%; }
-  .natgeo-collage { --art-width: 1920; --art-ratio: 1920 / 2690; }
+  .design .natgeo-gallery { padding: 12px 0 6px; gap: 6px; }
+  .gallery-frame { width: 100%; }
+  .gallery-arrow { width: 36px; height: 36px; font-size: 25px; }
+  .gallery-prev { left: 4px; }
+  .gallery-next { right: 4px; }
+  .natgeo-collage { --art-width: 1920; --art-ratio: 1920 / 2592; }
   .natgeo-collage [data-art-node="20:20"] { left: 0; top: 0; width: 100%; }
-  .natgeo-collage [data-art-node="20:21"] { left: 0; top: calc(var(--u) * 934); width: 100%; }
-  .natgeo-collage [data-art-node="20:22"] { left: 0; translate: none; top: calc(var(--u) * 1726); width: 100%; }
+  .natgeo-collage [data-art-node="20:21"] { left: 0; top: calc(var(--u) * 836); width: 100%; }
+  .natgeo-collage [data-art-node="20:22"] { left: 0; translate: none; top: calc(var(--u) * 1628); width: 100%; }
+  .natgeo .design .natgeo-section-title { border-top: 1px solid var(--red); padding-top: 12px; }
+  .natgeo-section-title > div { display: none; }
   .natgeo .design [data-node-id="38:90"] { align-self: flex-start; }
   .natgeo .design [data-node-id="365:1661"] { padding-top: 14px; border-top: 1px solid var(--red); }
   .design [id]:target { scroll-margin-top: 80px; }
@@ -203,9 +259,6 @@ img { vertical-align: middle; }
 @media (max-width: 375px) {
   .design .case-nav .action > div { display: none; }
 }
-.replacement-image { display: block; width: 100%; height: 100%; object-fit: contain; }
-[data-node-id="2051:1270"] { display: block; position: absolute; left: calc(728 * var(--u)); top: calc(3004 * var(--u)); width: calc(742 * var(--u)); height: calc(761 * var(--u)); }
-[data-node-id="4147:644"] { display: block; position: absolute; left: calc(960 * var(--u)); top: calc(325 * var(--u)); width: calc(742 * var(--u)); height: calc(723.035 * var(--u)); }
 .cover-award-caption {
   position: absolute; top: 22%; right: 34%; width: 37%; color: #282828;
   text-align: right; font-size: calc(14 * var(--u)); font-weight: 600; line-height: 1.18;
